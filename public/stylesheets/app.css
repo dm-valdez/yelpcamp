@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap');
+
+* {
+    font-family: 'Monserrat', sans-serif;
+}
+
 a {
     text-decoration: none;
 }
@@ -5,9 +11,15 @@ a {
 #cluster-map {
     width: 100%;
     height: 500px;
+    border-radius: 10px;
 }
 
 #map {
+    width: 100%;
+    height: 300px;
+}
+
+#img {
     width: 100%;
     height: 300px;
 }
