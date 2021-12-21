@@ -5,8 +5,49 @@ const mapBoxToken = process.env.MAPBOX_TOKEN;
 const geocoder = mbxGeocoding({ accessToken: mapBoxToken });
 
 module.exports.index = async (req, res) => {
-    const campgrounds = await Campground.find({});
-    res.render('campgrounds/index', { campgrounds });
+    // const campgrounds = await Campground.find({});
+    // res.render('campgrounds/index', { campgrounds });
+
+    let currentPage = Number(req.query.page);
+    console.log({
+        currentPage
+    });
+
+    if (!currentPage || currentPage < 1)
+    // if client req /index w/o ?page 
+    {
+        currentPage = 1;
+        // get campgrounds from the database
+        req.session.campgrounds = await Campground.find({}).limit(1000);
+
+        // Initialize Pagination
+        let len = (req.session.campgrounds).length;
+        req.session.pagination = {
+            totalItems: len, // total # of campgrounds
+            itemsPerPage: 12,
+            totalPages: Math.ceil(len / 12) // total # of pages
+        }
+    }
+
+    if (!req.session.pagination || !req.session.campgrounds) res.redirect('campgrounds/');
+
+    const {
+        itemsPerPage,
+        totalItems,
+        totalPages
+    } = req.session.pagination;
+    let start = (currentPage - 1) * itemsPerPage;
+    let end = currentPage * itemsPerPage;
+    if (end > totalItems) end = totalItems;
+
+    const campgrounds = (req.session.campgrounds);
+    res.render('campgrounds/', {
+        campgrounds,
+        totalPages,
+        currentPage,
+        start,
+        end
+    });
 }
 
 module.exports.renderNewForm = (req, res) => {
