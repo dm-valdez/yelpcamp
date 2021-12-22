@@ -1,18 +1,17 @@
 {
   "name": "yelpcamp",
   "version": "1.0.0",
-  "description": "",
+  "description": "my version of colt steele's bootcamp project",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node app.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "David Valdez",
   "license": "ISC",
   "dependencies": {
     "@mapbox/mapbox-sdk": "^0.13.2",
-    "array-shuffle": "^3.0.0",
     "cloudinary": "^1.27.1",
     "connect-flash": "^0.1.1",
     "connect-mongo": "^4.6.0",
