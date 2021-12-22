@@ -24,7 +24,7 @@
             <div class="mb-3">
                 <label class="form-label" for="price">Campground Price</label>
                 <div class="input-group">
-                    <span class="input-group-text" id="price-label">$</span>
+                    <span class="input-group-text" id="price-label">&#8369;</span>
                     <input type="text" class="form-control" id="price" placeholder="0.00" aria-label="price"
                         aria-describedby="price-label" name="campground[price]" value="<%=campground.price %>"
                         required><div class="valid-feedback">
@@ -51,13 +51,6 @@
                 </div>
             </div>
             <div class="mb-3">
-                <!-- <% campground.images.forEach(function(img, i) {  %>
-                <img src="<%=img.thumbnail %>" class="img-thumbnail" alt="">
-                <div class="form-check-inline">
-                    <input type="checkbox" id="image-<%=i%>" name="deleteImages[]" value="<%=img.filename%>">
-                </div>
-                <label for="image-<%=i%>">Delete?</label>
-                <% })%> -->
                 <label class="form-label">Delete Image(s)...</label>
                 <div class="row row-cols-1 row-cols-md-4 g-4 mb-3">
                     <% campground.images.forEach((img, i) => { %>
