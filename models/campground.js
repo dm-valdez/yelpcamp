@@ -43,6 +43,11 @@ const campgroundSchema = new Schema(
         ]
     }, opts);
 
+// campgroundSchema.index({
+//     name: "text",
+//     location: "text"
+// });
+
 campgroundSchema.virtual('properties.popUpText').get(function () {
     return `
     <strong><a href="/campgrounds/${this._id}">${this.title}</a></strong>

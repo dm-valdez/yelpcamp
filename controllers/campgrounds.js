@@ -3,16 +3,15 @@ const mbxGeocoding = require('@mapbox/mapbox-sdk/services/geocoding');
 const { cloudinary } = require('../cloudinary');
 const mapBoxToken = process.env.MAPBOX_TOKEN;
 const geocoder = mbxGeocoding({ accessToken: mapBoxToken });
+//const arrayShuffle = import('array-shuffle');
+//import arrayShuffle from "array-shuffle";
+//import arrayShuffle from 'array-shuffle';
+//const { shuffle } = import('array-shuffle')
+//import arrayShuffle from 'array-shuffle';
+
 
 module.exports.index = async (req, res) => {
-    // const campgrounds = await Campground.find({});
-    // res.render('campgrounds/index', { campgrounds });
-
     let currentPage = Number(req.query.page);
-    console.log({
-        currentPage
-    });
-
     if (!currentPage || currentPage < 1)
     // if client req /index w/o ?page 
     {
@@ -49,6 +48,22 @@ module.exports.index = async (req, res) => {
         end
     });
 }
+
+// module.exports.search = async (req, res) => {
+//     const searchTerm = req.query.q ? (req.query.q).match(/\w+/g).join(' ') : "";
+//     console.log(searchTerm);
+
+//     const campgrounds = arrayShuffle(await Campground.find({
+//         $text: {
+//             $search: searchTerm
+//         }
+//     }));
+
+//     res.render('campgrounds/search', {
+//         searchTerm,
+//         campgrounds
+//     });
+// };
 
 module.exports.renderNewForm = (req, res) => {
     res.render('campgrounds/new');
